@@ -1,4 +1,5 @@
 import { IconProps } from "@radix-ui/react-icons/dist/types";
+import { LucideProps } from "lucide-react";
 import { ForwardRefExoticComponent, RefAttributes } from "react";
 
 export interface NavLink {
@@ -36,4 +37,12 @@ export interface Project {
   technologies: string[];
   live_url: string;
   code_repo_url: string;
+}
+
+export interface SocialLink {
+  label: string;
+  href: string;
+  icon: ForwardRefExoticComponent<
+    Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>
+  >;
 }

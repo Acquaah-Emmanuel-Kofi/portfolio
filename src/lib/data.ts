@@ -1,10 +1,16 @@
-import { ContactInfo, NavLink, Project, SkillCategory, WorkExperience } from "@/types/data";
+import {
+  ContactInfo,
+  NavLink,
+  Project,
+  SkillCategory,
+  SocialLink,
+  WorkExperience,
+} from "@/types/data";
 import {
   GitHubLogoIcon,
   LinkedInLogoIcon,
   TwitterLogoIcon,
 } from "@radix-ui/react-icons";
-
 import {
   Code,
   Database,
@@ -15,6 +21,13 @@ import {
   FlaskConical,
   Settings2,
   Brain,
+  Github,
+  Linkedin,
+  Twitter,
+  Instagram,
+  Phone,
+  Rss,
+  PhoneIcon,
 } from "lucide-react";
 
 export const navLinks: NavLink[] = [
@@ -51,6 +64,11 @@ export const contactInfo: ContactInfo[] = [
     href: "https://x.com/kofi_waga?s=11",
     icon: TwitterLogoIcon,
     label: "X (Twitter)",
+  },
+  {
+    href: "https://wa.me/233559045947",
+    icon: PhoneIcon,
+    label: "WhatsApp",
   },
 ];
 
@@ -198,5 +216,38 @@ export const projects: Project[] = [
     technologies: ["Javascript", "React", "Materual UI", "Styled Components"],
     live_url: "https://waghub.netlify.app/",
     code_repo_url: "https://github.com/Acquaah-Emmanuel-Kofi/waghub",
+  },
+];
+
+export const socialLinks: SocialLink[] = [
+  {
+    label: "GitHub",
+    href: "https://github.com/Acquaah-Emmanuel-Kofi/",
+    icon: Github,
+  },
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/acquaah-emmanuel-kofi/",
+    icon: Linkedin,
+  },
+  {
+    label: "X (Twitter)",
+    href: "https://x.com/kofi_waga?s=11",
+    icon: Twitter,
+  },
+  {
+    label: "Instagram",
+    href: "https://www.instagram.com/iamkofi.emma?igsh=MWJsNG10N2JlNTg1Nw%3D%3D&utm_source=qr",
+    icon: Instagram,
+  },
+  {
+    href: "https://wa.me/233559045947",
+    icon: Phone,
+    label: "WhatsApp",
+  },
+  {
+    label: "RSS Feed",
+    href: "/rss.xml",
+    icon: Rss,
   },
 ];
