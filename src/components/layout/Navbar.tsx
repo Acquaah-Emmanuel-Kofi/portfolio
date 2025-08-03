@@ -4,22 +4,23 @@ import { Button } from "@/components/ui/button";
 import { JSX, SVGProps } from "react";
 import ThemeToggler from "./ThemeToggler";
 import { navLinks } from "@/lib/data";
-import { Code2Icon } from "lucide-react";
+import Brand from "./Brand";
 
 export default async function Navbar() {
   return (
-    <header className="sticky top-0 z-50 w-full shadow-sm">
-      <div className="container max-w-5xl mx-auto flex h-18 items-center justify-between py-2 px-4 md:px-6">
-        <Link href="/" className="flex items-center" prefetch={false}>
-          <div className="flex items-center gap-2">
-            <Code2Icon className="size-9 text-primary" />
-            <h1 className="text-3xl font-extrabold tracking-tight text-primary">
-              AEK
-            </h1>
-          </div>
+    <header className="sticky top-0 z-50 w-full shadow-sm bg-background">
+      <div className="container max-w-4xl mx-auto flex h-18 items-center justify-between py-2 px-6">
+        <Link href="/" prefetch={false}>
+          <Brand />
         </Link>
         <nav className="hidden space-x-4 lg:flex">
           <ThemeToggler />
+          <Link
+            href="#skills"
+            className="text-sm transition-colors text-gray-350 hover:text-primary dark:hover:text-gray-50"
+          >
+            Skills
+          </Link>
           {navLinks.map((item) => (
             <Link
               href={item.path}
