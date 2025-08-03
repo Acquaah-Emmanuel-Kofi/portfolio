@@ -24,10 +24,10 @@ export default function Hero() {
             </h1>
           </div>
           <p className="max-w-[600px] lg:text-lg text-gray-500 dark:text-gray-400">
-            I'm a software engineer from Ghana (🇬🇭) who enjoys building clean,
-            performant software that solves real problems and doesn't suck. I
-            care deeply about user experience, maintainable code, and shipping
-            things that actually work.
+            I&apos;m a software engineer from Ghana (🇬🇭) who enjoys building
+            clean, performant software that solves real problems and
+            doesn&apos;t suck. I care deeply about user experience, maintainable
+            code, and shipping things that actually work.
           </p>
           <div className="space-x-4">
             {contactInfo.map(({ href, icon: Icon, label }) => (

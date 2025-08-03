@@ -1,5 +1,4 @@
 import { projects } from "@/lib/data";
-import { Title } from "../common/Title";
 import {
   Card,
   CardContent,
@@ -8,7 +7,6 @@ import {
   CardHeader,
   CardTitle,
 } from "../ui/card";
-import Image from "next/image";
 import { Badge } from "../ui/badge";
 import Link from "next/link";
 import { Button } from "../ui/button";

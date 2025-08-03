@@ -1,14 +1,6 @@
 import React from "react";
 import Link from "next/dist/client/link";
-import { contactInfo, socialLinks } from "@/lib/data";
-
-function SocialLink({ href, icon: Icon }: { href: string; icon: any }) {
-  return (
-    <a href={href} target="_blank" rel="noopener noreferrer">
-      <Icon />
-    </a>
-  );
-}
+import { socialLinks } from "@/lib/data";
 
 export default function Footer() {
   return (
