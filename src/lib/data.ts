@@ -1,33 +1,42 @@
+import { ContactInfo, NavLink, Project, SkillCategory, WorkExperience } from "@/types/data";
 import {
   GitHubLogoIcon,
   LinkedInLogoIcon,
   TwitterLogoIcon,
 } from "@radix-ui/react-icons";
 
-export const navLinks = [
+import {
+  Code,
+  Database,
+  Server,
+  Paintbrush,
+  Layers,
+  GitBranch,
+  FlaskConical,
+  Settings2,
+  Brain,
+} from "lucide-react";
+
+export const navLinks: NavLink[] = [
   {
     label: "About",
-    path: "#about",
-  },
-  {
-    label: "Skills",
-    path: "#skills",
+    path: "/about",
   },
   {
     label: "Projects",
-    path: "#projects",
+    path: "/projects",
   },
   {
     label: "Contact",
-    path: "#contact",
+    path: "/contact",
   },
   {
     label: "Articles",
-    path: "#articles",
+    path: "/articles",
   },
 ];
 
-export const contactInfo = [
+export const contactInfo: ContactInfo[] = [
   {
     href: "https://github.com/Acquaah-Emmanuel-Kofi/",
     icon: GitHubLogoIcon,
@@ -42,5 +51,152 @@ export const contactInfo = [
     href: "https://x.com/kofi_waga?s=11",
     icon: TwitterLogoIcon,
     label: "X (Twitter)",
+  },
+];
+
+export const workExperience: WorkExperience[] = [
+  {
+    id: "1",
+    company: "Stanbic Bank Ghana",
+    companyWebsite: "https://www.stanbic.com.gh/",
+    role: "Software Engineer",
+    startDate: "Nov 2024",
+    endDate: "Present",
+    skills: ["Angular", "Angular Material", "Scrum", "Azure Devops"],
+    keyResponsibilities: [
+      "Redesigned and implemented UI improvements for internal applications such as the Momo Linkage on the staff dashboard and Moby Legal, resulting in more intuitive user experiences and improved productivity for staff.",
+      "Collaborated with cross-functional teams to develop and maintain scalable Angular-based frontend applications.",
+    ],
+  },
+  {
+    id: "2",
+    company: "AmaliTech",
+    companyWebsite: "https://amalitech.com/",
+    role: "Software Engineer",
+    startDate: "Oct 2023",
+    endDate: "Oct 2024",
+    skills: ["AWS", "Angular", "React", "NgRx"],
+    keyResponsibilities: [
+      "Adapted to Agile methodologies, actively participating in sprint planning and ensuring clear communication with stakeholders.",
+      "Designed and developed web applications using JavaScript and React.",
+      "Collaborated with cross-functional teams to deliver high-quality products.",
+    ],
+  },
+  {
+    id: "3",
+    company: "AmaliTech",
+    companyWebsite: "https://amalitech.com/",
+    role: "Frontend Developer (Intern)",
+    startDate: "Sept 2021",
+    endDate: "Nov 2021",
+    skills: [
+      "React",
+      "React Native",
+      "Material UI",
+      "Tailwind CSS",
+      "Agile Methodologies",
+    ],
+    keyResponsibilities: [
+      "During this period with AmaliTech, I had the opportunity to dive into React, which opened up a whole new world of possibilities for me as a developer. I took on the challenge of building a fully functional movie app from scratch, leveraging React's powerful component-based architecture. Not only did I gain a deeper understanding of React's ecosystem, but I also sharpened my skills in state management and styling libraries, like styled-components. This project allowed me to turn complex user requirements into an intuitive and responsive interface, making the app both engaging and easy to navigate. It was a truly rewarding experience that reinforced my passion for building seamless user experiences!",
+    ],
+  },
+];
+
+export const skills: SkillCategory[] = [
+  {
+    title: "Languages",
+    icon: Code,
+    items: ["TypeScript", "JavaScript", "Java", "Python"],
+  },
+  {
+    title: "Frameworks",
+    icon: Layers,
+    items: ["Angular", "React", "Next.js"],
+  },
+  {
+    title: "Styling",
+    icon: Paintbrush,
+    items: [
+      "Tailwind CSS",
+      "SASS",
+      "Bootstrap",
+      "Shadcn",
+      "Angular Material",
+      "MUI",
+    ],
+  },
+  {
+    title: "Backend",
+    icon: Server,
+    items: ["Node.js", "Express"],
+  },
+  {
+    title: "Databases",
+    icon: Database,
+    items: ["MySQL", "MongoDB", "PostgreSQL", "Firebase"],
+  },
+  {
+    title: "Technologies",
+    icon: GitBranch,
+    items: [
+      "Git",
+      "GitHub",
+      "Vercel",
+      "Netlify",
+      "AWS",
+      "Jira",
+      "Azure DevOps",
+    ],
+  },
+  {
+    title: "State Management",
+    icon: Settings2,
+    items: ["Redux", "Redux Toolkit", "Zustand", "NgRx", "NgRx Signal Store"],
+  },
+  {
+    title: "Testing & Utilities",
+    icon: FlaskConical,
+    items: ["Jest", "TanStack Query"],
+  },
+  {
+    title: "Methodologies",
+    icon: Brain,
+    items: ["Agile", "Scrum"],
+  },
+];
+
+export const projects: Project[] = [
+  {
+    id: "1",
+    title: "Bancassurance",
+    description:
+      "An enterprise-grade platform enabling banks to sell insurance products directly to their customers. It streamlines policy creation, customer onboarding, premium payments, and claim management while ensuring compliance with financial regulations.",
+    technologies: ["Angular", "Angular Material", "Typescript", "TailwindCSS"],
+    live_url: "",
+    code_repo_url: "",
+  },
+  {
+    id: "2",
+    title: "Community CrowdFunding Platform",
+    description:
+      "A decentralized crowdfunding platform that empowers communities to raise funds for projects, causes, or emergencies. It features user account management, secure payments, campaign tracking, and real-time updates to promote transparency and engagement.",
+    technologies: [
+      "Typescript",
+      "Angular",
+      "TailwindCSS",
+      "NgRx",
+      "Tanstack Query",
+    ],
+    live_url: "https://ccp.amalitech-dev.net/",
+    code_repo_url: "",
+  },
+  {
+    id: "3",
+    title: "WagHub",
+    description:
+      "A movie app built with React and styled-components, allowing users to browse and search for movies. Features include dynamic content loading, responsive design, and a smooth user experience.",
+    technologies: ["Javascript", "React", "Materual UI", "Styled Components"],
+    live_url: "https://waghub.netlify.app/",
+    code_repo_url: "https://github.com/Acquaah-Emmanuel-Kofi/waghub",
   },
 ];
