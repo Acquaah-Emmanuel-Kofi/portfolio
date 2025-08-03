@@ -1,9 +1,15 @@
 import Hero from "@/components/home/Hero";
+import Projects from "@/components/home/Projects";
+import TechStack from "@/components/home/TechStack";
+import WorkExperience from "@/components/home/WorkExperience";
 
 export default function Home() {
   return (
-    <section>
+    <section className="container max-w-4xl mx-auto px-6">
       <Hero />
+      <Projects />
+      <WorkExperience />
+      <TechStack />
     </section>
   );
 }
