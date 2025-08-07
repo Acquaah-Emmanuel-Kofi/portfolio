@@ -146,7 +146,7 @@ export const skills: SkillCategory[] = [
   {
     title: "Backend",
     icon: Server,
-    items: ["Node.js", "Express"],
+    items: ["Node.js", "Express", "Next.js", "Prisma", "Drizzle"],
   },
   {
     title: "Databases",
