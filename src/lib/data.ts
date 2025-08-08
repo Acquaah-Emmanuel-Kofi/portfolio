@@ -144,7 +144,6 @@ export const education: Education[] = [
   },
 ];
 
-
 export const skills: SkillCategory[] = [
   {
     title: "Languages",
@@ -314,4 +313,12 @@ export const socialLinks: SocialLink[] = [
     href: "/rss.xml",
     icon: Rss,
   },
+];
+
+export const funFacts: string[] = [
+  "💻 Life would be much easier if I had the source code.",
+  "🧠 Become a programmer, lose your brain's virginity.",
+  "🙏 I know H.T.M.L. (How To Meet Lord).",
+  "✍️ I blog when inspiration hits or when a bug teaches me something",
+  "🎩 If you want to treat women like objects, do it with class.",
 ];
