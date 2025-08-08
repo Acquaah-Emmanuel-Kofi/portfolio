@@ -13,10 +13,10 @@ export default function RouteProgressBar() {
 
     const timeout = setTimeout(() => {
       setLoading(false);
-    }, 600); 
+    }, 600);
 
     return () => clearTimeout(timeout);
-  }, [pathname]); 
+  }, [pathname]);
 
   return (
     <AnimatePresence>
@@ -27,7 +27,7 @@ export default function RouteProgressBar() {
           animate={{ scaleX: 1, opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.4, ease: "easeOut" }}
-          className="fixed top-[72px] left-0 right-0 h-1 bg-blue-500 origin-left z-[9999]"
+          className="fixed top-[72px] left-0 right-0 h-[0.5px] bg-blue-500 origin-left z-[9999]"
         />
       )}
     </AnimatePresence>

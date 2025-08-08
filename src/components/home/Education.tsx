@@ -1,8 +1,7 @@
 "use client";
 
 import { easeOut, motion, Variants } from "framer-motion";
-import { workExperience } from "@/lib/data";
-import Link from "next/link";
+import { education } from "@/lib/data";
 import { Title } from "../common/Title";
 
 const containerVariants: Variants = {
@@ -10,7 +9,7 @@ const containerVariants: Variants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.6, // spacing between timeline points
+      staggerChildren: 0.6,
     },
   },
 };
@@ -38,7 +37,7 @@ const itemVariants: Variants = {
   },
 };
 
-export default function WorkExperience() {
+export default function Education() {
   return (
     <motion.section
       id="experience"
@@ -47,7 +46,7 @@ export default function WorkExperience() {
       whileInView="visible"
       viewport={{ once: false, amount: 0.2 }}
     >
-      <Title title="Work Experience" />
+      <Title title="Education" />
 
       <motion.div
         className="relative pl-6 grid gap-10"
@@ -59,47 +58,21 @@ export default function WorkExperience() {
           variants={lineVariants}
         />
 
-        {workExperience.map((exp) => (
+        {education.map((ed) => (
           <motion.div
-            key={exp.id}
+            key={ed.id}
             className="grid gap-1 relative"
             variants={itemVariants}
           >
             {/* Dot on the timeline */}
             <div className="aspect-square w-3 bg-gray-900 rounded-full absolute left-0 translate-x-[-29.5px] z-10 top-2 dark:bg-gray-50" />
 
-            {/* Role and Company */}
-            <h4 className="text-xl font-medium">
-              {exp.role} @
-              <Link
-                href={exp.companyWebsite}
-                target="_blank"
-                className="ml-2 text-blue-500 hover:border-b border-blue-500 hover:border-red-500 hover:text-red-500"
-              >
-                {exp.company}
-              </Link>
-            </h4>
-
-            {/* Date */}
+            <h4 className="text-xl font-medium">{ed.degree}</h4>
+            <h5 className="font-medium">{ed.institution}</h5>
             <div className="text-gray-500 dark:text-gray-400">
-              {exp.startDate} - {exp.endDate}
+              {ed.startDate} - {ed.endDate}
             </div>
-
-            {/* Responsibilities */}
-            <div className="mt-2">
-              <h6 className="font-medium">Key Responsibilities:</h6>
-              <ul className="text-gray-500 text-sm list-disc pl-4">
-                {exp.keyResponsibilities.map((resp) => (
-                  <motion.li
-                    key={resp}
-                    variants={itemVariants}
-                    transition={{ duration: 0.4 }}
-                  >
-                    {resp}
-                  </motion.li>
-                ))}
-              </ul>
-            </div>
+            <p className="mt-2 text-sm text-gray-500">{ed.description}</p>
           </motion.div>
         ))}
       </motion.div>

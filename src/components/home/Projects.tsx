@@ -16,17 +16,6 @@ import { Button } from "../ui/button";
 import { GitHubLogoIcon, GlobeIcon } from "@radix-ui/react-icons";
 import { Title } from "../common/Title";
 
-const sectionVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.6,
-    },
-  },
-};
-
 const containerVariants = {
   hidden: {},
   visible: {
@@ -50,18 +39,11 @@ const cardVariants = {
 
 export default function Projects() {
   return (
-    <motion.section
+    <section
       id="projects"
       className="container max-w-5xl mx-auto py-12 md:py-16 lg:py-20"
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.2 }}
-      variants={sectionVariants}
     >
-      <motion.div
-        className="mb-12 flex justify-between items-center"
-        variants={sectionVariants}
-      >
+      <motion.div className="mb-12 flex justify-between items-center">
         <Title title="Projects" className="mb-0" />
         <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
           <Button variant="link">
@@ -132,6 +114,6 @@ export default function Projects() {
           </motion.article>
         ))}
       </motion.div>
-    </motion.section>
+    </section>
   );
 }

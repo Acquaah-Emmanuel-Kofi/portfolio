@@ -46,3 +46,25 @@ export interface SocialLink {
     Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>
   >;
 }
+
+export interface ICertificate {
+  link: string;
+  title: string;
+  issuer: string;
+}
+
+export interface Course {
+  link: string;
+  title: string;
+  issuer: string;
+  screenShot: string;
+}
+
+export interface Education {
+  id: string;
+  institution: string;
+  degree: string;
+  description: string;
+  startDate: string;
+  endDate: string;
+}

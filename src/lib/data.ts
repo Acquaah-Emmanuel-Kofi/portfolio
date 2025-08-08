@@ -1,5 +1,8 @@
 import {
   ContactInfo,
+  Course,
+  Education,
+  ICertificate,
   NavLink,
   Project,
   SkillCategory,
@@ -120,6 +123,27 @@ export const workExperience: WorkExperience[] = [
   },
 ];
 
+export const education: Education[] = [
+  {
+    id: "1",
+    institution: "Takoradi Technical University",
+    degree: "BTech. Computer Software Engineering",
+    description:
+      "Focused on software engineering, algorithms, and law in I.T. Completed a final year project on Student Industrial Attachment Management System (SIAMS).",
+    startDate: "March 2023",
+    endDate: "March 2025",
+  },
+  {
+    id: "2",
+    institution: "Takoradi Technical University",
+    degree: "HND Information Technology",
+    description:
+      "Focused on software engineering, algorithms, and full-stack web development. Completed a final year project on KampuzSales-Mobile-App.",
+    startDate: "Jan 2020",
+    endDate: "Jan 2023",
+  },
+];
+
 export const skills: SkillCategory[] = [
   {
     title: "Languages",
@@ -180,6 +204,45 @@ export const skills: SkillCategory[] = [
     title: "Methodologies",
     icon: Brain,
     items: ["Agile", "Scrum"],
+  },
+];
+
+export const certificates: ICertificate[] = [
+  {
+    link: "https://www.credly.com/badges/561edc16-684b-4f75-85b1-cd63fac7ecbd",
+    title: "AWS Certified Cloud Practitioner",
+    issuer: "Amazon Web Services Training and Certification",
+  },
+  {
+    link: "https://www.credly.com/badges/ba8399f0-a9c6-45cd-85c8-072448b7c9b8",
+    title: "AWS re/Start Graduate",
+    issuer: "Amazon Web Services Training and Certification",
+  },
+  {
+    link: "https://drive.google.com/drive/folders/1lfCDN7n4UFsigNiFNvCgszbutTVYpKdP",
+    title: "AWS Cloud Practitioner Essentials",
+    issuer: "Amazon Web Services Training and Certification",
+  },
+];
+
+export const courses: Course[] = [
+  {
+    link: "https://www.sololearn.com/en/certificates/CC-ZXVQNK45",
+    title: "Coding Foundations",
+    issuer: "Sololearn",
+    screenShot: "/certificates/sololearn.jpg",
+  },
+  {
+    link: "https://drive.google.com/file/d/1GGhQ3ITcfCwUtrZQYYzwLeV0jGGn-uLq/view",
+    title: "Fundamentals of Web Development",
+    issuer: "Amalitech",
+    screenShot: "/certificates/amalitech.jpg",
+  },
+  {
+    link: "https://drive.google.com/file/d/1Toeahri0HwgekB4zhZMkWTGbS8ZK_GeG/view",
+    title: "Oracle",
+    issuer: "Oracle Academy",
+    screenShot: "/certificates/oracle.png",
   },
 ];
 
@@ -250,4 +313,12 @@ export const socialLinks: SocialLink[] = [
     href: "/rss.xml",
     icon: Rss,
   },
+];
+
+export const funFacts: string[] = [
+  "💻 Life would be much easier if I had the source code.",
+  "🧠 Become a programmer, lose your brain's virginity.",
+  "🙏 I know H.T.M.L. (How To Meet Lord).",
+  "✍️ I blog when inspiration hits or when a bug teaches me something",
+  "🎩 If you want to treat women like objects, do it with class.",
 ];
