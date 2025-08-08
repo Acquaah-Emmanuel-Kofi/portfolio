@@ -13,7 +13,7 @@ export default function ScrollProgressBar() {
   return (
     <motion.div
       style={{ scaleX }}
-      className="fixed top-[72px] left-0 right-0 h-1 bg-blue-500 hover:bg-red-500 origin-left z-50"
+      className="fixed top-[72px] left-0 right-0 h-[0.5px] bg-blue-500 hover:bg-red-500 origin-left z-50"
     />
   );
 }
