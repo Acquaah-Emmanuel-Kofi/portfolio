@@ -1,7 +1,7 @@
-import About from "@/components/home/About";
-import CertificationsAndCourses from "@/components/home/CertificationsAndCourses";
-import Education from "@/components/home/Education";
-import WorkExperience from "@/components/home/WorkExperience";
+import About from "@/components/about/About";
+import CertificationsAndCourses from "@/components/about/CertificationsAndCourses";
+import Education from "@/components/about/Education";
+import WorkExperience from "@/components/about/WorkExperience";
 import ScrollProgressBar from "@/components/layout/ScrollProgressBar";
 
 export default function AboutPage() {
