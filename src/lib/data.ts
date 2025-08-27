@@ -256,6 +256,7 @@ export const projects: Project[] = [
     live_url: "",
     code_repo_url: "",
     thumbnail: "",
+    year: "2024",
   },
   {
     id: "2",
@@ -272,6 +273,7 @@ export const projects: Project[] = [
     live_url: "https://ccp.amalitech-dev.net/",
     code_repo_url: "",
     thumbnail: "",
+    year: "2023",
   },
   {
     id: "3",
@@ -282,6 +284,7 @@ export const projects: Project[] = [
     live_url: "https://waghub.netlify.app/",
     code_repo_url: "https://github.com/Acquaah-Emmanuel-Kofi/waghub",
     thumbnail: "/assets/waghub.png",
+    year: "2022",
   },
 ];
 

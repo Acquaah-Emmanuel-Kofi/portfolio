@@ -32,8 +32,17 @@ export default function ProjectListCard({ project }: { project: Project }) {
 
       {/* Content */}
       <div className="w-full flex flex-col p-4">
-        <CardHeader className="p-0 mb-2">
-          <CardTitle className="text-lg md:text-xl">{project.title}</CardTitle>
+        <CardHeader className="p-0">
+          <CardTitle className="leading-6">
+            {project.title} -{" "}
+            <span className="text-muted-foreground">{project.year}</span>
+          </CardTitle>
+        </CardHeader>
+
+        <CardContent className="p-0 mb-4">
+          <CardDescription className="text-sm md:text-base mb-2">
+            {project.description}
+          </CardDescription>
           <div className="flex flex-wrap gap-2">
             {project.technologies.map((tech) => (
               <Badge key={tech} variant="secondary">
@@ -41,12 +50,6 @@ export default function ProjectListCard({ project }: { project: Project }) {
               </Badge>
             ))}
           </div>
-        </CardHeader>
-
-        <CardContent className="p-0 mb-2">
-          <CardDescription className="text-sm md:text-base">
-            {project.description}
-          </CardDescription>
         </CardContent>
 
         <CardFooter className="p-0 mt-auto">

@@ -38,6 +38,7 @@ export interface Project {
   live_url: string;
   code_repo_url: string;
   thumbnail: string;
+  year: string;
 }
 
 export interface SocialLink {
