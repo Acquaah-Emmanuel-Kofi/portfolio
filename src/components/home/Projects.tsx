@@ -50,7 +50,7 @@ export default function Projects() {
         whileInView="visible"
         viewport={{ once: false, amount: 0.2 }}
       >
-        {projects.map((project) => (
+        {projects.slice(0, 3).map((project) => (
           <motion.article
             key={project.title}
             variants={cardVariants}

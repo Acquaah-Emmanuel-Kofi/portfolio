@@ -64,8 +64,8 @@ export default function About() {
             about turning ideas into scalable, user-friendly digital
             experiences. This little corner of the web is my personal lab —
             where I showcase projects, write tutorials, and share my random
-            musings. Whether I&apos;m debugging tricky code or sipping coffee
-            while doodling app ideas, I&apos;m always building something cool.
+            musings. Whether I&apos;m wrestling with stubborn bugs or sketching
+            out wild app ideas, I&apos;m always building something cool.
           </motion.p>
         </motion.div>
 
@@ -79,12 +79,20 @@ export default function About() {
             variants={delayedChildVariants}
             className="text-muted-foreground leading-relaxed"
           >
-            I studied Information Technology at TTU - Takoradi Technical
-            University (Takoradi, Ghana) — a solid foundation that exposed me to
-            everything from programming in C++ and OOP with Java, to data
-            structures, database design with MySQL, operating systems,
-            networking, AI, mobile computing, web development, and even the
-            legal and ethical sides of tech.
+            I studied Information Technology at{" "}
+            <a
+              href="https://ttu.edu.gh/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-500 hover:text-red-500 border-b border-transparent hover:border-red-500 transition-colors"
+            >
+              TTU
+            </a>{" "}
+            - Takoradi Technical University (Takoradi, Ghana) — a solid
+            foundation that exposed me to everything from programming in C++ and
+            OOP with Java, to data structures, database design with MySQL,
+            operating systems, networking, AI, mobile computing, web
+            development, and even the legal and ethical sides of tech.
           </motion.p>
         </motion.div>
 

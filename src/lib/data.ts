@@ -151,9 +151,9 @@ export const skills: SkillCategory[] = [
     items: ["TypeScript", "JavaScript", "Java", "Python"],
   },
   {
-    title: "Frameworks",
+    title: "Frameworks & Libraries",
     icon: Layers,
-    items: ["Angular", "React", "Next.js"],
+    items: ["Angular", "Next.js", "React", "React Native"],
   },
   {
     title: "Styling",

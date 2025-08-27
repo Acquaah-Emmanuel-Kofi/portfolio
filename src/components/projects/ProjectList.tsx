@@ -90,9 +90,9 @@ export default function ProjectList() {
             variants={delayedChildVariants}
             className="text-muted-foreground leading-relaxed"
           >
-            A little scrapbook of my coding adventures — every project a new
-            lesson, a few mistakes, and a whole lot of learning. Take a scroll,
-            it’s fun! 🚀
+            A little scrapbook of my coding adventures — every project is a new
+            lesson with few mistakes to make, and a whole lot of learning. Take
+            a scroll, it&apos;s fun! 🚀
           </motion.p>
         </motion.div>
       </motion.div>
