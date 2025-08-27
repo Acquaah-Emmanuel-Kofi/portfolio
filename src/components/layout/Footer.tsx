@@ -4,7 +4,7 @@ import { socialLinks } from "@/lib/data";
 
 export default function Footer() {
   return (
-    <footer className="container max-w-4xl mx-auto px-6 py-6 border-t text-sm flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
+    <footer className="container max-w-4xl mx-auto px-6 py-6 border-t text-sm flex flex-col-reverse md:flex-row items-center justify-between gap-4 text-center md:text-left">
       <span>
         <time>&copy; {new Date().getFullYear()} </time>
         <Link
