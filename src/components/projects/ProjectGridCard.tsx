@@ -16,7 +16,7 @@ import { Project } from "@/types/data";
 
 export default function ProjectGridCard({ project }: { project: Project }) {
   return (
-    <Card className="bg-transparent h-full flex flex-col">
+    <Card className="h-full flex flex-col bg-muted/10 hover:bg-card">
       <CardHeader className="pb-0">
         <CardTitle className="leading-6">
           {project.title} -{" "}

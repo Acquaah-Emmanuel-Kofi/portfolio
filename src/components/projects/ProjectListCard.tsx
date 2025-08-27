@@ -17,7 +17,7 @@ import { Project } from "@/types/data";
 
 export default function ProjectListCard({ project }: { project: Project }) {
   return (
-    <Card className="bg-transparent flex flex-col lg:flex-row overflow-hidden !p-0">
+    <Card className="flex flex-col lg:flex-row overflow-hidden !p-0 bg-muted/10 hover:bg-card">
       {/* Image */}
       {project.thumbnail && (
         <div className="relative w-full lg:w-2/5 h-48 lg:h-auto flex-shrink-0">
