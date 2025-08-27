@@ -255,6 +255,7 @@ export const projects: Project[] = [
     technologies: ["Angular", "Angular Material", "Typescript", "TailwindCSS"],
     live_url: "",
     code_repo_url: "",
+    thumbnail: "",
   },
   {
     id: "2",
@@ -270,6 +271,7 @@ export const projects: Project[] = [
     ],
     live_url: "https://ccp.amalitech-dev.net/",
     code_repo_url: "",
+    thumbnail: "",
   },
   {
     id: "3",
@@ -279,6 +281,7 @@ export const projects: Project[] = [
     technologies: ["Javascript", "React", "Materual UI", "Styled Components"],
     live_url: "https://waghub.netlify.app/",
     code_repo_url: "https://github.com/Acquaah-Emmanuel-Kofi/waghub",
+    thumbnail: "/assets/waghub.png",
   },
 ];
 

@@ -37,6 +37,7 @@ export interface Project {
   technologies: string[];
   live_url: string;
   code_repo_url: string;
+  thumbnail: string;
 }
 
 export interface SocialLink {
