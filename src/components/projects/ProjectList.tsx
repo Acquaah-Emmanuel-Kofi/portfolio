@@ -1,6 +1,6 @@
 "use client";
 
-import { AnimatePresence, easeOut, motion } from "framer-motion";
+import { AnimatePresence, easeOut, motion, Variants } from "framer-motion";
 import { projects } from "@/lib/data";
 import { Title } from "../common/Title";
 import { Tabs, TabsList, TabsTrigger } from "../ui/tabs";
@@ -32,6 +32,27 @@ const cardVariants = {
   exit: { opacity: 0, scale: 0.95, y: 20, transition: { duration: 0.2 } },
 };
 
+const childVariants: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5 },
+  },
+};
+
+const delayedChildVariants: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      delay: i * 0.3,
+    },
+  }),
+};
+
 export default function ProjectList() {
   const [view, setView] = useState("grid");
 
@@ -40,7 +61,7 @@ export default function ProjectList() {
       id="projects"
       className="container max-w-5xl mx-auto py-12 md:py-16 lg:py-20"
     >
-      <motion.div className="mb-12 flex justify-between items-center">
+      <motion.div className="flex justify-between items-center">
         <Title title="Projects" animate={false} className="mb-0" />
 
         <Tabs value={view} onValueChange={setView}>
@@ -53,6 +74,27 @@ export default function ProjectList() {
             </TabsTrigger>
           </TabsList>
         </Tabs>
+      </motion.div>
+
+      <motion.div
+        className="mb-12 mt-6"
+        initial="hidden"
+        animate="visible"
+        variants={containerVariants}
+      >
+        <motion.div variants={childVariants}>
+          <motion.p
+            custom={1}
+            initial="hidden"
+            animate="visible"
+            variants={delayedChildVariants}
+            className="text-muted-foreground leading-relaxed"
+          >
+            A little scrapbook of my coding adventures — every project a new
+            lesson, a few mistakes, and a whole lot of learning. Take a scroll,
+            it’s fun! 🚀
+          </motion.p>
+        </motion.div>
       </motion.div>
 
       <AnimatePresence mode="wait">
