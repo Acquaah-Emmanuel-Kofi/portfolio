@@ -17,19 +17,22 @@ import { Project } from "@/types/data";
 export default function ProjectGridCard({ project }: { project: Project }) {
   return (
     <Card className="bg-transparent h-full flex flex-col">
-      <CardHeader>
-        <CardTitle>{project.title}</CardTitle>
-        <div className="flex flex-wrap gap-2 mt-2">
+      <CardHeader className="pb-0">
+        <CardTitle className="leading-6">
+          {project.title} -{" "}
+          <span className="text-muted-foreground">{project.year}</span>
+        </CardTitle>
+        <CardDescription>{project.description}</CardDescription>
+      </CardHeader>
+
+      <CardContent className="flex-1">
+        <div className="flex flex-wrap gap-2">
           {project.technologies.map((tech) => (
             <Badge key={tech} variant="secondary">
               {tech}
             </Badge>
           ))}
         </div>
-      </CardHeader>
-
-      <CardContent className="flex-1">
-        <CardDescription>{project.description}</CardDescription>
       </CardContent>
 
       <CardFooter>
