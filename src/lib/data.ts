@@ -151,9 +151,9 @@ export const skills: SkillCategory[] = [
     items: ["TypeScript", "JavaScript", "Java", "Python"],
   },
   {
-    title: "Frameworks",
+    title: "Frameworks & Libraries",
     icon: Layers,
-    items: ["Angular", "React", "Next.js"],
+    items: ["Angular", "Next.js", "React", "React Native"],
   },
   {
     title: "Styling",
@@ -255,6 +255,8 @@ export const projects: Project[] = [
     technologies: ["Angular", "Angular Material", "Typescript", "TailwindCSS"],
     live_url: "",
     code_repo_url: "",
+    thumbnail: "",
+    year: "2024",
   },
   {
     id: "2",
@@ -270,6 +272,8 @@ export const projects: Project[] = [
     ],
     live_url: "https://ccp.amalitech-dev.net/",
     code_repo_url: "",
+    thumbnail: "",
+    year: "2023",
   },
   {
     id: "3",
@@ -279,6 +283,8 @@ export const projects: Project[] = [
     technologies: ["Javascript", "React", "Materual UI", "Styled Components"],
     live_url: "https://waghub.netlify.app/",
     code_repo_url: "https://github.com/Acquaah-Emmanuel-Kofi/waghub",
+    thumbnail: "/assets/waghub.png",
+    year: "2022",
   },
 ];
 
