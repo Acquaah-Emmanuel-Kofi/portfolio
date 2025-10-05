@@ -4,6 +4,7 @@ import { promises as fs } from "fs";
 import path from "path";
 import { compileMDX } from "next-mdx-remote/rsc";
 import { ArticleMeta } from "@/types/content";
+import { notFound } from "next/navigation";
 
 const articlesDir = path.join(process.cwd(), "src/content/articles");
 
@@ -17,7 +18,17 @@ export const getAllFiles = async () => {
 };
 
 export const getFileContent = async (filename: string) => {
-  return await fs.readFile(path.join(articlesDir, filename), "utf-8");
+  try {
+    return await fs.readFile(path.join(articlesDir, filename), "utf-8");
+  } catch (error: any) {
+    if ("code" in error && error.code === "ENOENT") {
+      console.warn(`File not found: ${articlesDir}`);
+      notFound();
+    }
+
+    console.error(`Error reading article file ${filename}:`, error);
+    throw error;
+  }
 };
 
 export const getArticleBySlug = async (
