@@ -1,9 +1,10 @@
+import Section from "@/components/layout/Section";
 import ProjectList from "@/components/projects/ProjectList";
 
 export default function ProjectsPage() {
   return (
-    <section className="container max-w-4xl mx-auto px-6">
+    <Section>
       <ProjectList />
-    </section>
+    </Section>
   );
 }

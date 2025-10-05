@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Suspense } from "react";
 import ArticleHeader from "@/components/articles/ArticleHeader";
 import PageSpinner from "@/components/common/PageSpinner";
+import Section from "@/components/layout/Section";
 
 export async function generateMetadata({
   params,
@@ -29,10 +30,10 @@ export default async function Article({
   });
 
   return (
-    <section className="container max-w-4xl mx-auto px-6">
+    <Section>
       <article className="prose lg:prose-xl mx-auto mb-10">
         <Suspense fallback={<PageSpinner />}>{content}</Suspense>
       </article>
-    </section>
+    </Section>
   );
 }

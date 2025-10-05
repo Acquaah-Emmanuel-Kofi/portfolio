@@ -3,15 +3,16 @@ import CertificationsAndCourses from "@/components/about/CertificationsAndCourse
 import Education from "@/components/about/Education";
 import WorkExperience from "@/components/about/WorkExperience";
 import ScrollProgressBar from "@/components/layout/ScrollProgressBar";
+import Section from "@/components/layout/Section";
 
 export default function AboutPage() {
   return (
-    <section className="container max-w-4xl mx-auto px-6">
+    <Section>
       <ScrollProgressBar />
       <About />
       <WorkExperience />
       <Education />
       <CertificationsAndCourses />
-    </section>
+    </Section>
   );
 }

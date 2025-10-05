@@ -1,4 +1,5 @@
 import ArticleList from "@/components/articles/ArticleList";
+import Section from "@/components/layout/Section";
 import { getAllArticles } from "@/lib/mdx";
 
 export default async function ArticlesPage() {
@@ -6,15 +7,17 @@ export default async function ArticlesPage() {
 
   if (!articles || articles.length === 0) {
     return (
-      <section className="container max-w-4xl mx-auto px-6">
-        <p>No articles found.</p>
-      </section>
+      <Section>
+        <div className="flex justify-center items-center h-screen">
+          <p>No articles found.</p>
+        </div>
+      </Section>
     );
   }
 
   return (
-    <section className="container max-w-4xl mx-auto px-6">
+    <Section>
       <ArticleList articles={articles} />
-    </section>
+    </Section>
   );
 }
