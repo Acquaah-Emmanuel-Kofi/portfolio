@@ -1,0 +1,188 @@
+---
+title: "Building a Modern MDX Blog with Next.js & Tailwind v4"
+date: "2025-10-05"
+updated: "2025-10-05T12:00:00Z"
+description: "A step-by-step guide to building a styled MDX blog using Next.js App Router and Tailwind v4."
+tags: ["mdx", "nextjs", "tailwind-v4", "next-mdx-remote"]
+thumbnail: "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fm2qi67x32n9du4zgc0ho.jpg"
+author: "Acquaah Emmanuel Kofi"
+authorSocialMediaLink: "https://www.linkedin.com/in/acquaah-emmanuel-kofi/"
+readTime: "8 min"
+---
+
+<ArticleHeader article={frontmatter} />
+
+I'm writing this guide because I hit a wall! 🧱 My portfolio could successfully render MDX content (Markdown + React components), but the **styles were completely broken**. No matter how many Stack Overflow posts or GitHub issues I read, the markdown remained stubbornly unstyled.
+
+The core issue was a PostCSS configuration conflict with Tailwind CSS v4, leading to this cryptic error:
+
+> `Error evaluating Node.js code Error: [object Object] is not a PostCSS plugin`
+
+After much digging, the solution lay in a single, non-obvious change: using the **`@plugin`** directive instead of the standard `@import`. This guide captures that hard-won knowledge, making it easy for you to build a modern, lightning-fast blog using the latest and greatest in the JavaScript ecosystem—Next.js App Router, Tailwind CSS v4, and `next-mdx-remote`.
+
+---
+
+## 🛠️ Step 1: Create the Project & Install Dependencies
+
+Let's start by setting up our Next.js project and installing the necessary packages. We'll use `pnpm` as the package manager, but feel free to use `npm` or `yarn`.
+
+### A. New Next.js App
+
+```bash
+pnpm create next-app my-mdx-blog --ts --app
+cd my-mdx-blog
+```
+
+### B. Install Tailwind CSS v4 & MDX
+
+We need Tailwind v4, its PostCSS integration, the Typography plugin (for beautiful markdown styling), and `next-mdx-remote`.
+
+```bash
+# Core Dependencies
+pnpm install next-mdx-remote
+pnpm install -D tailwindcss@next @tailwindcss/postcss @tailwindcss/typography
+```
+
+---
+
+## 🧱 Step 2: Configure Tailwind CSS v4
+
+Tailwind v4 is a "CSS-first" framework. This means we manage configuration (like plugins) directly in our CSS, and we need a simple `postcss.config.mjs` file.
+
+### A. Create `postcss.config.mjs`
+
+Create this file in your project root. This file tells PostCSS to use the correct v4 plugin.
+
+```javascript
+// postcss.config.mjs
+const config = {
+  plugins: {
+    // This is the correct v4 PostCSS plugin
+    "@tailwindcss/postcss": {},
+  },
+};
+
+export default config;
+```
+
+###### Reference: [Install Tailwind CSS with Next.js](https://tailwindcss.com/docs/installation/framework-guides/nextjs)
+
+### B. Update `globals.css` with the v4 Directives
+
+This is the most crucial step for Tailwind v4. We use `@import` for the core framework and the new **`@plugin`** directive for Typography.
+
+Open `./src/app/globals.css` and replace its content with the following:
+
+```css
+/* ./src/app/globals.css */
+
+@import "tailwindcss";
+
+/* 💡 V4 Syntax: Use @plugin for Typography and other JS-based plugins */
+@plugin "@tailwindcss/typography";
+
+/* Add any custom layers or styles here, if needed */
+/* @layer components { ... } */
+/* @layer utilities { ... } */
+```
+
+---
+
+## ✨ Step 3: Create a Dynamic MDX Page
+
+We will use a separate MDX file and a simple custom component to demonstrate the setup.
+
+### A. Create the MDX File
+
+Create a folder for your posts and add your first MDX file, for example: `src/posts/first-post.mdx`.
+
+```markdown
+---
+title: "First MDX Blog Post"
+date: "2025-10-05"
+description: "Demonstrating the magic of Markdown and JSX together."
+---
+
+# Hello, MDX Magic! 👋
+
+This is **plain Markdown**. The `prose` class will style this beautifully!
+
+- Easy to write
+- Easy to read
+
+But watch this... we are now using a **React Component** directly in the markdown:
+
+<Button>Click Me!</Button>
+
+## Conclusion
+
+MDX is the perfect bridge between content and code. Happy blogging! 🚀
+```
+
+### B. Create a Simple React Component
+
+The MDX file above uses a `<Button>`. We need to define it.
+
+Create the component at `src/components/Button.tsx`:
+
+```tsx
+// src/components/Button.tsx
+export default function Button({ children }: { children: React.ReactNode }) {
+  return (
+    <button
+      className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg shadow-xl transition-all duration-300 transform hover:scale-105 my-6"
+      onClick={() => alert(`Button clicked! Content: ${children}`)}
+    >
+      {children}
+    </button>
+  );
+}
+```
+
+### C. Create the Blog Post Page
+
+We will use the **App Router's dynamic routing** to load posts. Create the file `src/app/blog/[slug]/page.tsx`.
+
+```tsx
+// src/app/blog/[slug]/page.tsx
+import fs from "fs";
+import path from "path";
+import { MDXRemote } from "next-mdx-remote/rsc";
+import Button from "@/components/Button"; // Adjust path if needed
+
+const POSTS_PATH = path.join(process.cwd(), "src/posts");
+
+export default async function PostPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+  const filePath = path.join(POSTS_PATH, `${slug}.mdx`);
+  const mdxSource = fs.readFileSync(filePath, "utf8");
+
+  return (
+    <div className="container max-w-4xl mx-auto px-6 py-12">
+      <article className="prose lg:prose-xl mx-auto">
+        <MDXRemote
+          source={mdxSource}
+          components={{
+            Button,
+          }}
+        />
+      </article>
+    </div>
+  );
+}
+```
+
+---
+
+## ✅ Step 4: Run and Enjoy!
+
+1.  **Run the dev server:** `pnpm run dev`
+2.  **Navigate to:** `http://localhost:3000/blog/first-post`
+
+You should now see your post, styled beautifully by the **`prose`** class from the Typography plugin, and your custom **`<Button>`** component will be interactive.
+
+Congrats! You just witnessed the portfolio's **first MDX-powered brainwave**! Stay tuned for more! 🚀
