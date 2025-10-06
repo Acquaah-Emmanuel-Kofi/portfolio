@@ -5,6 +5,7 @@ import ArticleHeader from "@/components/articles/ArticleHeader";
 import PageSpinner from "@/components/common/PageSpinner";
 import Section from "@/components/layout/Section";
 import ScrollProgressBar from "@/components/layout/ScrollProgressBar";
+import ArticleFooter from "@/components/articles/ArticleFooter";
 
 export async function generateMetadata({
   params,
@@ -35,6 +36,7 @@ export default async function Article({
       <ScrollProgressBar />
       <article className="prose lg:prose-xl dark:prose-invert mx-auto mb-10">
         <Suspense fallback={<PageSpinner />}>{content}</Suspense>
+        <ArticleFooter />
       </article>
     </Section>
   );
