@@ -33,7 +33,7 @@ export default function ArticleHeader({ article }: { article: ArticleMeta }) {
         </div>
       )}
 
-      <div className="text-sm md:text-base flex flex-wrap items-center gap-x-4 gap-y-1 text-muted-foreground">
+      <div className="text-sm md:text-base flex flex-col md:flex-row md:flex-wrap md:items-center gap-x-4 gap-y-1 text-muted-foreground">
         <span>
           <span className="font-semibold text-primary">Posted:</span>{" "}
           <Tooltip>
@@ -84,7 +84,6 @@ export default function ArticleHeader({ article }: { article: ArticleMeta }) {
         )}
 
         <span className="flex items-center gap-x-4">
-          {article.readTime && <span className="text-muted-foreground">•</span>}
           <ReadAloudButton textToRead={readText} />
         </span>
       </div>
