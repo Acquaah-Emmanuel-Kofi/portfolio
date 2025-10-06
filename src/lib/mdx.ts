@@ -31,10 +31,10 @@ export const getFileContent = async (filename: string) => {
   }
 };
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const getArticleBySlug = async (
   slug: string,
   options?: {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     components?: Record<string, React.ComponentType<any>>;
   }
 ) => {
