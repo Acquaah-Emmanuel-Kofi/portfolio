@@ -20,6 +20,7 @@ export const getAllFiles = async () => {
 export const getFileContent = async (filename: string) => {
   try {
     return await fs.readFile(path.join(articlesDir, filename), "utf-8");
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (error: any) {
     if ("code" in error && error.code === "ENOENT") {
       console.warn(`File not found: ${articlesDir}`);
