@@ -25,7 +25,7 @@ export default function ArticleHeader({ article }: { article: ArticleMeta }) {
             width={1200}
             height={630}
             priority
-            className="w-full h-72 md:h-96 object-cover rounded-xl shadow-sm"
+            className="w-full h-auto object-cover rounded-xl shadow-sm"
           />
         </div>
       )}
