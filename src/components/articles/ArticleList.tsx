@@ -90,8 +90,9 @@ export default function ArticleList({ articles }: { articles: ArticleMeta[] }) {
             variants={delayedChildVariants}
             className="text-muted-foreground leading-relaxed"
           >
-            I like to blog about what I'm learning in the software engineering
-            world. Hopefully you'll find some of it interesting. ✒️
+            I like to blog about what I&apos;m learning in the software
+            engineering world. Hopefully you&apos;ll find some of it
+            interesting. ✒️
           </motion.p>
         </motion.div>
       </motion.div>

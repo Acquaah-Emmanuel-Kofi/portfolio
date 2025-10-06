@@ -34,7 +34,7 @@ export const getFileContent = async (filename: string) => {
 export const getArticleBySlug = async (
   slug: string,
   options?: {
-    components?: Record<string, React.ComponentType<any>>;
+    components?: {};
   }
 ) => {
   const source = await getFileContent(`${slug}.mdx`);

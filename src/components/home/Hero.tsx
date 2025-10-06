@@ -107,7 +107,7 @@ export default function Hero() {
             variants={childVariants}
             className="space-x-4 flex flex-wrap items-center"
           >
-            {contactInfo.map(({ href, icon: Icon, label }, index) => (
+            {contactInfo.map(({ href, icon: Icon, label }) => (
               <motion.div
                 key={href}
                 whileHover={{ scale: 1.1 }}
