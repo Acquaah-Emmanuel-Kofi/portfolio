@@ -67,7 +67,7 @@ export default function ArticleHeader({ article }: { article: ArticleMeta }) {
               href={article.authorSocialMediaLink ?? "#"}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-blue-500 hover:text-red-500 border-b border-transparent hover:border-red-500 transition-colors no-underline"
+              className="!text-muted-foreground !font-normal hover:!text-red-500"
             >
               {article.author ?? "Unknown"}
             </Link>

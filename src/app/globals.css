@@ -124,3 +124,27 @@
     @apply bg-background text-foreground;
   }
 }
+
+.prose {
+  --tw-prose-links: var(--color-blue-500);
+
+  --tw-prose-link-hover: var(--color-red-500);
+
+  a {
+    border-bottom: 1px solid transparent;
+    transition: color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+
+    color: var(--tw-prose-links);
+
+    text-decoration: none;
+
+    &:hover {
+      border-color: var(--color-red-500);
+      color: var(--tw-prose-link-hover);
+    }
+  }
+}
+
+.prose a {
+  @apply no-underline;
+}
