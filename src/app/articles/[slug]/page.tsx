@@ -31,7 +31,7 @@ export default async function Article({
 
   return (
     <Section>
-      <article className="prose lg:prose-xl mx-auto mb-10">
+      <article className="prose lg:prose-xl dark:prose-invert mx-auto mb-10">
         <Suspense fallback={<PageSpinner />}>{content}</Suspense>
       </article>
     </Section>
