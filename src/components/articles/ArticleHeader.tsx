@@ -13,6 +13,10 @@ export default function ArticleHeader({ article }: { article: ArticleMeta }) {
 
   return (
     <header className="mb-10 border-b border-gray-200 dark:border-gray-800 pb-6">
+      <div className="mt-2">
+        <h2>{article.title}</h2>
+      </div>
+
       {article.thumbnail && (
         <div className="mb-6">
           <Image
@@ -56,21 +60,25 @@ export default function ArticleHeader({ article }: { article: ArticleMeta }) {
           </span>
         )}
 
-        <span>
-          <span className="font-semibold text-primary">By:</span>{" "}
-          <Link
-            href={article.authorSocialMediaLink ?? "#"}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-blue-500 hover:text-red-500 border-b border-transparent hover:border-red-500 transition-colors no-underline"
-          >
-            {article.author ?? "Unknown"}
-          </Link>
-        </span>
+        {article.author && article.authorSocialMediaLink && (
+          <span>
+            <span className="font-semibold text-primary">By:</span>{" "}
+            <Link
+              href={article.authorSocialMediaLink ?? "#"}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-500 hover:text-red-500 border-b border-transparent hover:border-red-500 transition-colors no-underline"
+            >
+              {article.author ?? "Unknown"}
+            </Link>
+          </span>
+        )}
 
-        <span className="text-muted-foreground">
-          • {article.readTime} <span className="text-primary">read</span>
-        </span>
+        {article.readTime && (
+          <span className="text-muted-foreground">
+            • {article.readTime} <span className="text-primary">read</span>
+          </span>
+        )}
       </div>
     </header>
   );
