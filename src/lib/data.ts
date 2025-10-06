@@ -43,10 +43,6 @@ export const navLinks: NavLink[] = [
     path: "/projects",
   },
   {
-    label: "Contact",
-    path: "/contact",
-  },
-  {
     label: "Articles",
     path: "/articles",
   },
