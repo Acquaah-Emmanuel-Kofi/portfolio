@@ -7,9 +7,12 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { formatArticleDates } from "@/lib/utils";
+import ReadAloudButton from "./ReadAloudButton";
 
 export default function ArticleHeader({ article }: { article: ArticleMeta }) {
   const { posted, updated } = formatArticleDates(article.date, article.updated);
+
+  const readText = `${article.title}. ${article.description}`;
 
   return (
     <header className="mb-10 border-b border-gray-200 dark:border-gray-800 pb-6">
@@ -79,6 +82,11 @@ export default function ArticleHeader({ article }: { article: ArticleMeta }) {
             • {article.readTime} <span className="text-primary">read</span>
           </span>
         )}
+
+        <span className="flex items-center gap-x-4">
+          {article.readTime && <span className="text-muted-foreground">•</span>}
+          <ReadAloudButton textToRead={readText} />
+        </span>
       </div>
     </header>
   );
