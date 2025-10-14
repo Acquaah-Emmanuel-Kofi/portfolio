@@ -54,7 +54,7 @@ const delayedChildVariants: Variants = {
 };
 
 export default function ArticleList({ articles }: { articles: ArticleMeta[] }) {
-  const [view, setView] = useState("list");
+  const [view, setView] = useState("grid");
 
   return (
     <section
@@ -90,9 +90,13 @@ export default function ArticleList({ articles }: { articles: ArticleMeta[] }) {
             variants={delayedChildVariants}
             className="text-muted-foreground leading-relaxed"
           >
-            I like to blog about what I&apos;m learning in the software
-            engineering world. Hopefully you&apos;ll find some of it
-            interesting. ✒️
+            I use this space to share what&apos;s on my mind — mostly software
+            engineering, sometimes whatever else I feel like talking about at
+            the time. I enjoy documenting what I learn and hope it helps or
+            inspires you along the way. ✒️
+            <br /> <br />
+            Oh, and I&apos;m open to freelance work, so if you need someone to
+            help build something solid, let&apos;s talk!
           </motion.p>
         </motion.div>
       </motion.div>
