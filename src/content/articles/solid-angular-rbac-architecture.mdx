@@ -1,0 +1,231 @@
+---
+title: "Building a SOLID Role-Based Access Control (RBAC) Architecture in Angular"
+date: "2025-10-14"
+description: "A deep dive into designing a scalable, type-safe, and SOLID Role-Based Access Control system using Angular Signals and modern architecture patterns."
+tags: ["angular", "rbac", "signals", "typescript", "architecture"]
+thumbnail: "/assets/solid-rbac-architecture.png"
+author: "Acquaah Emmanuel Kofi"
+authorSocialMediaLink: "https://www.linkedin.com/in/acquaah-emmanuel-kofi/"
+readTime: "8 min"
+---
+
+<ArticleHeader article={frontmatter} />
+
+Implementing Role-Based Access Control (RBAC) is a critical step for securing and organizing access in Angular applications. In this guide, we’ll build a **modern, scalable, and maintainable RBAC architecture** that follows SOLID principles — integrating cleanly with Angular Signals, standalone components, and state management.
+
+---
+
+## 🎯 Goals
+
+Our RBAC system will:
+
+- Protect **routes** based on user roles
+- Show or hide **UI elements** dynamically
+- Integrate seamlessly with a **centralized Auth Store**
+- Be **declarative and reusable**, avoiding scattered `if` checks
+
+---
+
+## 🏗️ Folder Structure
+
+A clean, modular folder layout keeps your RBAC implementation maintainable:
+
+```
+src/
+├── app/
+│   ├── core/
+│   │   ├── auth/
+│   │   │   ├── auth.service.ts
+│   │   │   ├── auth.store.ts
+│   │   │   ├── auth.guard.ts
+│   │   │   ├── role.guard.ts
+│   │   │   ├── has-role.directive.ts
+│   │   │   └── auth.types.ts
+│   │   ├── interceptors/
+│   │   ├── services/
+│   │   ├── models/
+│   │   └── core.module.ts
+│   ├── shared/
+│   │   ├── directives/
+│   │   ├── components/
+│   │   └── utils/
+│   ├── features/
+│   │   ├── admin/
+│   │   ├── user/
+│   │   └── manager/
+│   └── app.routes.ts
+└── environments/
+```
+
+---
+
+## 🔑 Step 1: Centralized Auth Store
+
+We’ll use the **Angular Signals Store** to manage the authenticated user, token, and roles.
+
+```ts
+// core/auth/auth.store.ts
+import { signalStore, withState, withMethods } from "@ngrx/signals";
+
+interface AuthState {
+  user: { id: string; name: string; roles: string[] } | null;
+  token: string | null;
+}
+
+export const AuthStore = signalStore(
+  { providedIn: "root" },
+  withState<AuthState>({
+    user: null,
+    token: null,
+  }),
+  withMethods((store) => ({
+    setAuth(user: AuthState["user"], token: string) {
+      store.user.set(user);
+      store.token.set(token);
+    },
+    clearAuth() {
+      store.user.set(null);
+      store.token.set(null);
+    },
+    hasRole(role: string): boolean {
+      return store.user()?.roles.includes(role) ?? false;
+    },
+    hasAnyRole(roles: string[]): boolean {
+      const userRoles = store.user()?.roles ?? [];
+      return roles.some((r) => userRoles.includes(r));
+    },
+  }))
+);
+```
+
+---
+
+## 🚦 Step 2: Role-Based Route Guard
+
+Protect routes based on user roles using a dynamic **Role Guard**.
+
+```ts
+// core/auth/role.guard.ts
+import { inject } from "@angular/core";
+import { CanActivateFn, Router } from "@angular/router";
+import { AuthStore } from "./auth.store";
+
+export const roleGuard = (roles: string[]): CanActivateFn => {
+  return () => {
+    const auth = inject(AuthStore);
+    const router = inject(Router);
+
+    if (auth.hasAnyRole(roles)) {
+      return true;
+    }
+
+    router.navigate(["/unauthorized"]);
+    return false;
+  };
+};
+```
+
+### Usage in Routing
+
+```ts
+// app.routes.ts
+import { roleGuard } from "./core/auth/role.guard";
+
+export const routes = [
+  {
+    path: "admin",
+    canActivate: [roleGuard(["ADMIN"])],
+    loadComponent: () => import("./features/admin/admin.component"),
+  },
+  {
+    path: "manager",
+    canActivate: [roleGuard(["MANAGER", "ADMIN"])],
+    loadComponent: () => import("./features/manager/manager.component"),
+  },
+];
+```
+
+---
+
+## 🧩 Step 3: Role-Based UI Directive
+
+A structural directive like `*hasRole` allows you to **conditionally render** elements in templates based on user roles.
+
+```ts
+// core/auth/has-role.directive.ts
+import {
+  Directive,
+  Input,
+  TemplateRef,
+  ViewContainerRef,
+  effect,
+  inject,
+} from "@angular/core";
+import { AuthStore } from "./auth.store";
+
+@Directive({
+  selector: "[hasRole]",
+  standalone: true,
+})
+export class HasRoleDirective {
+  private auth = inject(AuthStore);
+  private view = inject(ViewContainerRef);
+  private tpl = inject(TemplateRef<any>);
+
+  @Input("hasRole") set roles(roles: string[]) {
+    effect(() => {
+      this.view.clear();
+      if (this.auth.hasAnyRole(roles)) {
+        this.view.createEmbeddedView(this.tpl);
+      }
+    });
+  }
+}
+```
+
+### Usage Example
+
+```html
+<button *hasRole="['ADMIN']" class="btn btn-primary">Delete User</button>
+```
+
+---
+
+## ⚙️ Step 4: Integrating with Backend
+
+Your backend JWT payload should include user roles:
+
+```json
+{
+  "sub": "user123",
+  "name": "John Doe",
+  "roles": ["ADMIN", "USER"]
+}
+```
+
+After decoding the token on login, update the Auth Store:
+
+```ts
+this.authStore.setAuth(decodedUser, token);
+```
+
+---
+
+## 🧠 Step 5: Centralized Role Enum
+
+For type safety and consistency, define your roles as an enum.
+
+```ts
+// core/auth/roles.enum.ts
+export enum UserRole {
+  ADMIN = "ADMIN",
+  MANAGER = "MANAGER",
+  USER = "USER",
+}
+```
+
+Use it throughout your app:
+
+```ts
+roleGuard([UserRole.ADMIN]);
+```
